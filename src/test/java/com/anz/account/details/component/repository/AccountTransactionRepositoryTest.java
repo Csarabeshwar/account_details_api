@@ -15,16 +15,16 @@ import com.anz.account.details.model.AccountTransaction;
 import com.anz.account.details.repository.IAccountTransactionRepository;
 
 @ComponentTest
-@Sql(scripts = {"/db/test_data/data_setup.sql"}, executionPhase = BEFORE_TEST_METHOD)
-@Sql(scripts = {"/db/test_data/data_cleanup.sql"}, executionPhase = AFTER_TEST_METHOD)
+@Sql(scripts = { "/db/test_data/data_setup.sql" }, executionPhase = BEFORE_TEST_METHOD)
+@Sql(scripts = { "/db/test_data/data_cleanup.sql" }, executionPhase = AFTER_TEST_METHOD)
 public class AccountTransactionRepositoryTest {
 
-	 @Autowired
-	 private IAccountTransactionRepository accountTransactionRepository;
-	 
-	 @Test
-	  void findByAllAccountDetails_thenReturnAccountList() {
-	    List<AccountTransaction> accountSummary = accountTransactionRepository.findByAccountNumber("847257972");
-	    assertThat(accountSummary.size(), is(2));
-	  }
+	@Autowired
+	private IAccountTransactionRepository accountTransactionRepository;
+
+	@Test
+	void findByAllAccountDetails_thenReturnAccountList() {
+		List<AccountTransaction> accountSummary = accountTransactionRepository.findByAccountNumber("847257972");
+		assertThat(accountSummary.size(), is(2));
+	}
 }

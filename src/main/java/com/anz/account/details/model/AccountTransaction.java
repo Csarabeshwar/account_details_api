@@ -1,7 +1,5 @@
 package com.anz.account.details.model;
 
-import java.util.UUID;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -26,10 +24,6 @@ public class AccountTransaction {
 
 	@Id
 	private String id;
-
-//	@ManyToOne()
-//	@JoinColumn(name = "accountId")
-//	private AccountSummary accountSummary;
 	
 	@Column(name ="account_number")
 	private String accountNumber;
