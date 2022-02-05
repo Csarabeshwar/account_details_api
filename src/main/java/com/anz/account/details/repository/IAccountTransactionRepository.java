@@ -10,5 +10,5 @@ import com.anz.account.details.model.AccountTransaction;
 @Repository
 public interface IAccountTransactionRepository extends JpaRepository<AccountTransaction, String>{
 
-	List<AccountTransaction> findByAccountNumberIs(String accountNumber);
+	List<AccountTransaction> findByAccountNumber(String accountNumber);
 }

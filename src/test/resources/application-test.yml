@@ -31,7 +31,7 @@ spring:
       connectionTestQuery: select 1
       connectionInitSql: select 1
   jpa:
-    #    database-platform: org.hibernate.dialect.PostgresSQLDialect
+    show-sql: true
     properties.hibernate:
       jdbc:
         lob:

@@ -3,10 +3,13 @@ package com.anz.account.details.controller;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -32,16 +35,16 @@ public class AccountDetailsController {
 	
 	private final AccountTransactionService accountTransactionService;
 	
-	@GetMapping(value = "v1/accounts/getAccountList")
+	@GetMapping(value = "v1/accounts/details")
 	public  Callable<ResponseEntity<List<AccountSummary>>> getAccountSummary(final @RequestHeader HttpHeaders httpHeaders){
 		
 		 return () -> new ResponseEntity<>(accountSummaryService.getAccountSummary(httpHeaders),HttpStatus.OK);
 	}
 	
 	
-	@PostMapping(value = "v1/accounts/getAccountTransactionByAccountId")
-	public Callable<ResponseEntity<List<AccountTransaction>>> getAccountTransactionBy(@RequestBody final AccountTransactionRequest accountTxn,final @RequestHeader HttpHeaders httpHeaders){
-			
-		return () ->  new ResponseEntity<>(accountTransactionService.getAccountTransactionBy(accountTxn,httpHeaders),HttpStatus.OK);
+	@GetMapping(value = "v1/accounts/{accountNumber}")
+	public Callable<ResponseEntity<List<AccountTransaction>>> getAccountTransactionBy(@PathVariable(value = "accountNumber") final String accountNumber,final @RequestHeader HttpHeaders httpHeaders){
+		log.debug("-------------Inside Controller-------------------");
+		return () ->  new ResponseEntity<>(accountTransactionService.getAccountTransactionBy(accountNumber,httpHeaders),HttpStatus.OK);
 	} 
 }

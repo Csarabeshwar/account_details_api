@@ -24,7 +24,7 @@ public class AccountTransactionRepositoryTest {
 	 
 	 @Test
 	  void findByAllAccountDetails_thenReturnAccountList() {
-	    List<AccountTransaction> accountSummary = accountTransactionRepository.findByAccountNumberIs("847257972");
-	    assertThat(accountSummary.size(), is(1));
+	    List<AccountTransaction> accountSummary = accountTransactionRepository.findByAccountNumber("847257972");
+	    assertThat(accountSummary.size(), is(2));
 	  }
 }

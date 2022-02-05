@@ -13,7 +13,7 @@ tags:
 schemes:
 - "http"
 paths:
-  /getAccountList:
+  /details:
     get:
       tags:
       - "accountDetails"
@@ -32,7 +32,7 @@ paths:
               $ref: "#/definitions/AccountSummary"
         "500":
           description: "Internal Server Error"
-  /getAccountTransactionByAccountId:
+  /{accountNumber}:
     post:
       tags:
       - "account transaction"
@@ -44,11 +44,11 @@ paths:
       produces:
       - "application/json"
       parameters:
-       - in: body
-         name: user
-         description: The user to create.
-         schema:
-           $ref: "#/definitions/AccountTransactionRequest"
+       - in: path
+         name: accountNumber
+         required: true
+         description: AccountNumber to be searched
+         type: string
           
       responses:
         "200":
@@ -111,9 +111,4 @@ definitions:
       creditAmount:
         type: "string"
       transactionNarrative:
-        type: "string"
-  AccountTransactionRequest:
-    type: "object"
-    properties:
-      accountId:
         type: "string"

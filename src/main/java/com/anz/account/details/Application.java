@@ -13,7 +13,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 @SpringBootApplication
 @EnableJpaRepositories
-@EntityScan(basePackages = {"com.anz.account.details.model"})  // scan JPA entities
 public class Application {
 	
 	@Autowired

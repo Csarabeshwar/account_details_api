@@ -31,7 +31,7 @@ values(10,'847257972','AUCurrent591', 'Current' , '08/11/2018' , 'SGD', 92561.30
 --Account Transation---
 
 insert into Account_Transaction_Details(id,ACCOUNT_NUMBER, ACCOUNT_NAME, VALUE_DATE , CURRENCY, DEBIT_AMOUNT , CREDIT_AMOUNT,DEBIT_CREDIT_INDICATOR , TRANSACTION_NARRATIVE) 
-values(1,'847257972','AUCurrent591', '12/01/2012' , 'SGD', 8.33,0 ,'Debit', '');
+values(1,'847257972','AUCurrent591', '12/01/2012 00:00:00' , 'SGD', 8.33,0 ,'Debit', '');
 
 insert into Account_Transaction_Details(id,ACCOUNT_NUMBER, ACCOUNT_NAME, VALUE_DATE , CURRENCY, DEBIT_AMOUNT , CREDIT_AMOUNT,DEBIT_CREDIT_INDICATOR , TRANSACTION_NARRATIVE) 
 values(2,'847257972','AUSavings591', '04/01/2012' , 'AUD', 0, 83,'Credit', '');

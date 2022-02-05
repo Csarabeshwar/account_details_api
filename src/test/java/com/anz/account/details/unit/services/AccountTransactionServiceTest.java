@@ -33,11 +33,10 @@ public class AccountTransactionServiceTest {
 	public void getTxnFromAccountNumber_thenReturnTxns() {
 		
 		List<AccountTransaction> accountTxn = createAccountTxnMockData();
-		when(accountTxnRepo.findByAccountNumberIs("123587")).thenReturn(accountTxn);
+		when(accountTxnRepo.findByAccountNumber("123587")).thenReturn(accountTxn);
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.add("X_CORRELATION_ID", "TEST_04022022");
-		AccountTransactionRequest txnRequest = new AccountTransactionRequest().builder().accountNumber("123587").build();
-		List<AccountTransaction> accountTxnResponse = accountTxnService.getAccountTransactionBy(txnRequest, httpHeaders);
+		List<AccountTransaction> accountTxnResponse = accountTxnService.getAccountTransactionBy("123587", httpHeaders);
 		assertThat(accountTxnResponse.size(), is(1));
 		assertThat(accountTxnResponse.get(0).getAccountName(), is("TestSavingsAccount"));
 		assertThat(accountTxnResponse.get(0).getValueDate(), is("December 12, 2021"));
@@ -49,7 +48,7 @@ public class AccountTransactionServiceTest {
 				.creditAmount("0")
 				.debitAmount("125.25")
 				.currency("SGD").debitCreditIndicator(DebitCreditIndicator.Credit)
-				.transactionNarrative(null).valueDate("12/02/2021").build());
+				.transactionNarrative(null).valueDate("2021-12-12 00:00:00").build());
 	}
 
 }

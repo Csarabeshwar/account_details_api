@@ -23,13 +23,12 @@ The solution is implemented using SpringBoot with Gradle. Solution consists of:
 
 In addition to above, the code has below features:
 
-* DB can be started using `./gradlew composeUp`
+* DB can be started using `gradlew composeUp`
 * Integrated DB Migration using Flyway
 * Code has tests in 3 categories:
   * unit test for logic tests 
   * component test for Data Repos
   * integration test to validate end to end API calls using RestAssured
-* Integrated with Jacoco for test coverage
 * Enabled actuator for health check
 
 ## Important Gradle Tasks
@@ -37,9 +36,8 @@ In addition to above, the code has below features:
 | Gradle Tasks | Description | Pre-requisite |
 | ------------ | ----------- | ------------- |
 | `gradlew composeUp` | Starts postgres container | |
-| `gradlew test` | Executes unit and component test | composeUp is required for componentTest |
 | `gradlew bootRun`| Starts Application|
-| `gradlew integrationTest` | Executes integration test | gradlew bootRun|
+
 
 ## Steps to get the code running
 
@@ -78,3 +76,5 @@ Base URL is exposed at 8090: **[Base URL](http://localhost:8090/account-details)
 * Pagination needs to be implemented to protect the API from timing out as well as for consistent performance
 * Header validation needs to be added
 * Add additional test cases for better coverage and exceptions
+* Use of accountId instead of accountNumber. 
+* Database normalization in terms of relationship between table
