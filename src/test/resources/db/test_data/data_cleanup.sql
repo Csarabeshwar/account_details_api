@@ -1,0 +1,2 @@
+delete from account_summary;
+delete from account_transaction_details;

@@ -1,0 +1,119 @@
+swagger: "2.0"
+info:
+  description: ""
+  version: "1.0.0"
+  title: "Account Details Service"
+  contact:
+    email: "sarabeshwarc@gmail.com"
+host: "localhost:8090"
+basePath: "/v1"
+tags:
+- name: "accountDetails"
+  description: "Account Summary and Transaction"
+schemes:
+- "http"
+paths:
+  /getAccountList:
+    get:
+      tags:
+      - "accountDetails"
+      summary: "Get details of all the account from database"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/AccountSummary"
+        "500":
+          description: "Internal Server Error"
+  /getAccountTransactionByAccountId:
+    post:
+      tags:
+      - "account transaction"
+      summary: "Finds all transaction associated to an account"
+      description: ""
+      operationId: "getAccountTransactionByAccountId"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+       - in: body
+         name: user
+         description: The user to create.
+         schema:
+           $ref: "#/definitions/AccountTransactionRequest"
+          
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/AccountTransaction"
+        "204":
+          description: "No Content Found"
+definitions:
+  AccountSummary:
+    type: "object"
+    properties:
+      accountId:
+        type: "string"
+      accountNo:
+        type: "string"
+      accountName:
+        type: "string"
+      accountType:
+        type: "string"
+        enum:
+        - "Current"
+        - "Savings"
+      balanceDate:
+        type: "string"
+      currency:
+        type: "string"
+      availableBalance:
+        type: "string"
+    required:
+      - "accountId"
+      - "accountNo"
+      - "accountName"
+      - "accountType"
+      - "balanceDate"
+      - "availableBalance"
+      - "currency"
+  AccountTransaction:
+    type: "object"
+    properties:
+      accountId:
+        type: "string"
+      accountNo:
+        type: "string"
+      accountName:
+        type: "string"
+      debitCreditIndicator:
+        type: "string"
+        enum:
+        - "Credit"
+        - "Debit"
+      valueDate:
+        type: "string"
+      currency:
+        type: "string"
+      debitAmount:
+        type: "string"
+      creditAmount:
+        type: "string"
+      transactionNarrative:
+        type: "string"
+  AccountTransactionRequest:
+    type: "object"
+    properties:
+      accountId:
+        type: "string"
