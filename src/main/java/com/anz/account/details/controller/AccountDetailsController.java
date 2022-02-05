@@ -24,27 +24,26 @@ import com.anz.account.details.services.AccountTransactionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-
 @RestController
 @Slf4j
 @RequiredArgsConstructor
 public class AccountDetailsController {
 
-	
 	private final AccountSummaryService accountSummaryService;
-	
+
 	private final AccountTransactionService accountTransactionService;
-	
+
 	@GetMapping(value = "v1/accounts/details")
-	public  Callable<ResponseEntity<List<AccountSummary>>> getAccountSummary(final @RequestHeader HttpHeaders httpHeaders){
-		
-		 return () -> new ResponseEntity<>(accountSummaryService.getAccountSummary(httpHeaders),HttpStatus.OK);
+	public Callable<ResponseEntity<List<AccountSummary>>> getAccountSummary(
+			final @RequestHeader HttpHeaders httpHeaders) {
+		return () -> new ResponseEntity<>(accountSummaryService.getAccountSummary(httpHeaders), HttpStatus.OK);
 	}
-	
-	
+
 	@GetMapping(value = "v1/accounts/{accountNumber}")
-	public Callable<ResponseEntity<List<AccountTransaction>>> getAccountTransactionBy(@PathVariable(value = "accountNumber") final String accountNumber,final @RequestHeader HttpHeaders httpHeaders){
-		log.debug("-------------Inside Controller-------------------");
-		return () ->  new ResponseEntity<>(accountTransactionService.getAccountTransactionBy(accountNumber,httpHeaders),HttpStatus.OK);
-	} 
+	public Callable<ResponseEntity<List<AccountTransaction>>> getAccountTransactionBy(
+			@PathVariable(value = "accountNumber") final String accountNumber,
+			final @RequestHeader HttpHeaders httpHeaders) {
+		return () -> new ResponseEntity<>(accountTransactionService.getAccountTransactionBy(accountNumber, httpHeaders),
+				HttpStatus.OK);
+	}
 }

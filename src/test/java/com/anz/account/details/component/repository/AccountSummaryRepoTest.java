@@ -15,16 +15,16 @@ import com.anz.account.details.model.AccountSummary;
 import com.anz.account.details.repository.IAccountSummaryRepository;
 
 @ComponentTest
-@Sql(scripts = {"/db/test_data/data_setup.sql"}, executionPhase = BEFORE_TEST_METHOD)
-@Sql(scripts = {"/db/test_data/data_cleanup.sql"}, executionPhase = AFTER_TEST_METHOD)
+@Sql(scripts = { "/db/test_data/data_setup.sql" }, executionPhase = BEFORE_TEST_METHOD)
+@Sql(scripts = { "/db/test_data/data_cleanup.sql" }, executionPhase = AFTER_TEST_METHOD)
 public class AccountSummaryRepoTest {
 
-	 @Autowired
-	 private IAccountSummaryRepository accountSummaryRepository;
-	 
-	 @Test
-	  void findByAllAccountDetails_thenReturnAccountList() {
-	    List<AccountSummary> accountSummary = accountSummaryRepository.findAll();
-	    assertThat(accountSummary.size(), is(10));
-	  }
+	@Autowired
+	private IAccountSummaryRepository accountSummaryRepository;
+
+	@Test
+	void findByAllAccountDetails_thenReturnAccountList() {
+		List<AccountSummary> accountSummary = accountSummaryRepository.findAll();
+		assertThat(accountSummary.size(), is(10));
+	}
 }

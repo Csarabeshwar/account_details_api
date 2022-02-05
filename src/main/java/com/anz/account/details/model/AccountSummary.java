@@ -43,10 +43,5 @@ public class AccountSummary {
     
     @Column(name ="available_balance")
     private String availableBalance;
-    
-//    @OneToMany(targetEntity=AccountTransaction.class, mappedBy="accountSummary",
-//            cascade= CascadeType.ALL, fetch = FetchType.EAGER)
-//    List<AccountTransaction> accountTransactions;
-	
 	  
 }

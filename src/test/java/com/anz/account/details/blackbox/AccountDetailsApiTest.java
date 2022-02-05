@@ -16,8 +16,6 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.anz.account.details.Application;
-import com.anz.account.details.ApplicationTest;
-import com.anz.account.details.model.AccountTransactionRequest;
 
 import io.restassured.RestAssured;
 
@@ -40,21 +38,19 @@ public class AccountDetailsApiTest {
 
 	@Test
 	void getAccountDetails_returnAllAccountDetails() {
-		given().log().all().header(X_CORRELATION_ID, "Test_OK_1234").when().get("/v1/accounts/details").then()
-				.log().all().statusCode(HttpStatus.SC_OK).body(containsString("347786244"));
+		given().log().all().header(X_CORRELATION_ID, "Test_OK_1234").when().get("/v1/accounts/details").then().log()
+				.all().statusCode(HttpStatus.SC_OK).body(containsString("347786244"));
 	}
 
 	@Test
 	void getAccountTransactions_returnTransactionByAccountNo() {
-		given().log().all().header(X_CORRELATION_ID, "Test_OK_1010").when()
-				.get("/v1/accounts/847257972").then().log().all().statusCode(HttpStatus.SC_OK)
-				.body(containsString("AUCurrent591"));
+		given().log().all().header(X_CORRELATION_ID, "Test_OK_1010").when().get("/v1/accounts/847257972").then().log()
+				.all().statusCode(HttpStatus.SC_OK).body(containsString("AUCurrent591"));
 	}
 
 	@Test
 	void getAccountTransactions_returnTransactionByAccountNo_NoAccountFound() {
-		given().log().all().header(X_CORRELATION_ID, "Test_OK_4321").when()
-				.get("/v1/accounts/123").then().log().all()
+		given().log().all().header(X_CORRELATION_ID, "Test_OK_4321").when().get("/v1/accounts/123").then().log().all()
 				.statusCode(HttpStatus.SC_NO_CONTENT);
 	}
 

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.anz.account.details.model.AccountTransaction;
 
 @Repository
-public interface IAccountTransactionRepository extends JpaRepository<AccountTransaction, String>{
+public interface IAccountTransactionRepository extends JpaRepository<AccountTransaction, String> {
 
 	List<AccountTransaction> findByAccountNumber(String accountNumber);
 }

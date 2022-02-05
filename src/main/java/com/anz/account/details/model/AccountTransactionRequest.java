@@ -8,10 +8,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter@Setter
-@AllArgsConstructor @Builder @NoArgsConstructor
-public class AccountTransactionRequest implements Serializable{
+@Getter
+@Setter
+@AllArgsConstructor
+@Builder
+@NoArgsConstructor
+public class AccountTransactionRequest implements Serializable {
 
 	private String accountNumber;
-	
+
 }

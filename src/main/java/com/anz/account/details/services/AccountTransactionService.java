@@ -25,14 +25,14 @@ public class AccountTransactionService {
 
 	private final IAccountTransactionRepository accountTransactionRepo;
 
-	public List<AccountTransaction> getAccountTransactionBy(String accountNumber,HttpHeaders httpHeaders) {
-		
+	public List<AccountTransaction> getAccountTransactionBy(String accountNumber, HttpHeaders httpHeaders) {
+
 		String correlationId = httpHeaders.getFirst(HttpHeader.X_CORRELATION_ID);
-		log.debug("No Account found for accountId :" +"X_CORRELATION_ID = "+correlationId );
+		log.info("No Account found for accountId :" + "X_CORRELATION_ID = " + correlationId);
 		List<AccountTransaction> accountTxn = accountTransactionRepo.findByAccountNumber(accountNumber);
-		log.debug("After fetching fromDB" );
+		log.info("After fetching fromDB");
 		if (CollectionUtils.isEmpty(accountTxn)) {
-			log.debug("No Account found for accountId :" + accountNumber+"X_CORRELATION_ID");
+			log.error("No Account found for accountId :" + accountNumber + "X_CORRELATION_ID");
 			throw new AccountNotFoundException("No Account found for accountId :" + accountNumber);
 		}
 
@@ -40,14 +40,14 @@ public class AccountTransactionService {
 			txn.setValueDate(formatDate(txn.getValueDate()));
 		});
 
-		System.out.println("---------------------------------");
 		return accountTxn;
 
 	}
 
 	private String formatDate(String date) {
-		
-		DateTimeFormatter sourceDate = new DateTimeFormatterBuilder().appendPattern("yyyy-MM-dd HH:mm:ss").toFormatter();
+
+		DateTimeFormatter sourceDate = new DateTimeFormatterBuilder().appendPattern("yyyy-MM-dd HH:mm:ss")
+				.toFormatter();
 		LocalDate parsedDate = LocalDate.parse(date, sourceDate);
 		DateTimeFormatter targetDate = DateTimeFormatter.ofPattern("MMMM d, YYYY");
 		return parsedDate.format(targetDate);
