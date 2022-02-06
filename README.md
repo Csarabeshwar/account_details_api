@@ -36,7 +36,7 @@ In addition to above, the code has below features:
 | Gradle Tasks | Description | Pre-requisite |
 | ------------ | ----------- | ------------- |
 | `gradlew composeUp` | Starts postgres container | |
-| `gradlew bootRun`| Starts Application|
+| `gradlew bootRun`| Starts Application| `gradlew composeUp` ||
 
 
 ## Steps to get the code running
