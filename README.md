@@ -72,7 +72,7 @@ Base URL is exposed at 8090: **[Base URL](http://localhost:8090/account-details)
 * Assumed that other application-sit, prod files are not required to be updated
 
 ### Enhancements
-
+* Implement CACHE to improve the performance of the service and reduce the load to database
 * Pagination needs to be implemented to protect the API from timing out as well as for consistent performance
 * Header validation needs to be added
 * Add additional test cases for better coverage and exceptions
