@@ -19,7 +19,8 @@ plugins {
     id 'jacoco'
 }
 
-group = 'com.belong'
+
+group = 'com.anz'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
